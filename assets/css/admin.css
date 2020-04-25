@@ -233,12 +233,11 @@ body {
 
 .main .container-fluid td .avatar {
   width: 40px;
-
   border-radius: 50%;
 }
 
 .main .container-fluid td .slide {
-  width: auto;
+  width: 202px;
   max-height: 80px;
 }
 
@@ -270,7 +269,8 @@ body {
 
 .main .container-fluid .form-image {
   position: relative;
-
+  height: 100px;
+  width: 100px;
   background-color: #fff;
 }
 
@@ -279,7 +279,9 @@ body {
 }
 
 .main .container-fluid .form-image img {
-  max-width: 150px;
+  /*max-width: 150px;*/
+  height: 100px;
+  width: 100px;
 }
 
 .main .container-fluid .form-image i {

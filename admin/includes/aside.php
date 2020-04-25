@@ -1,12 +1,25 @@
-<?php echo $current_page=isset($current_page)?$current_page:''; ?>
+<?php 
+
+  require_once '../functions.php';
+
+  $current_page=isset($current_page) ? $current_page : ''; 
+
+  $current_user=getCurrentUser();
+
+  // 查询分类数据
+  $users=get_data_all("select * from users where id='{$current_user['id']}';");
+
+?>
 <div class="aside">
   <div class="profile">
-    <img class="avatar" src="../uploads/avatar.jpg">
-    <h3 class="name">布头儿</h3>
+    <?php foreach ($users as $item): ?>  
+    <img class="avatar" src="<?php echo $item['avatar'] ?>">
+    <?php endforeach ?>
+    <h3 class="name"><?php echo $current_user['nickname'] ?></h3>
   </div>
   <ul class="nav">
     <li <?php echo $current_page ==='index'? ' class="active"':''; ?>>
-      <a href="index.php"><i class="fa fa-dashboard"></i>仪表盘</a>
+      <a href="index.php"><i class="fa fa-dashboard"></i>首页</a>
     </li>
     <?php $menu_post=array('posts','post-add','categories'); ?>
     <li <?php echo in_array($current_page, $menu_post)?' class="active"':'' ?>>
@@ -31,7 +44,7 @@
         <i class="fa fa-cogs"></i>设置<i class="fa fa-angle-right"></i>
       </a>
       <ul id="menu-settings" class="collapse<?php echo in_array($current_page, $menu_setting)?' in':'' ?>">
-        <li<?php echo $current_page ==='nav-menus'? ' class="active"':''; ?>><a href="nav-menus.php">导航菜单</a></li>
+        <!-- <li<?php echo $current_page ==='nav-menus'? ' class="active"':''; ?>><a href="nav-menus.php">导航菜单</a></li> -->
         <li<?php echo $current_page ==='slides'? ' class="active"':''; ?>><a href="slides.php">图片轮播</a></li>
         <li<?php echo $current_page ==='settings'? ' class="active"':''; ?>><a href="settings.php">网站设置</a></li>
       </ul>
